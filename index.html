@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="display-box">
+      <ul>
+        <li>Life :
+          <span id="life"></span>
+        </li>
+        <li>Point : <span id="point">0</span></li>
+      </ul>
+
+      <div class="result"></div>
+
+      <div class="numpad-display">0</div>
+    </div>
+
+    <div class="numpad-box">
+      <button onclick="keypad(1)" id="keypad1">1</button>
+      <button onclick="keypad(2)" id="keypad2">2</button>
+      <button onclick="keypad(3)" id="keypad3">3</button>
+      <button onclick="keypad(4)" id="keypad4">4</button>
+      <button onclick="keypad(5)" id="keypad5">5</button>
+      <button onclick="Enter()" id="enter"><i class="fas fa-arrow-right"></i></button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
