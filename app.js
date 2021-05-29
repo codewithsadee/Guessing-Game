@@ -1,5 +1,6 @@
 //* DOM selection //
 var gameBoard = {
+  displayBox: document.querySelector(".display-box"),
   life: document.querySelector("#life"),
   point: document.querySelector("#point"),
   pointAnim: document.querySelector("#point-anim"),
@@ -25,6 +26,8 @@ gameBoard.life.innerHTML = lifeArray; //* printing gameBoard life //
 var inputHistory = []; //* total guess history //
 var pointArray = [0]; //* gameBoard point array //
 
+var random = Math.ceil(Math.random() * 5); //* genarate a random number within 1-5
+
 //! The keypad funtion --> defined the number what user clicked //
 function keypad(key) {
   gameBoard.keypadDisplay.innerHTML = key; //* display user selected number
@@ -33,11 +36,11 @@ function keypad(key) {
 
 //! GAME BOARD MAIN FUNCTION //
 function Enter() {
-  var random = Math.ceil(Math.random() * 5); //* genarate a random number within 1-5
 
   //* if condition is true player earn 5 points
   if (inputHistory[inputHistory.length - 1] == random) {
     pointArray[0] += 5;
+    random = Math.ceil(Math.random() * 5); //* genarate a random number within 1-5
 
     gameBoard.pointAnim.innerHTML = "<span>+5</span>"
     gameBoard.result.innerHTML = "Right Guess"; //* print result box message
@@ -45,7 +48,7 @@ function Enter() {
     //! Win Condition --> if player point reached 30 player will be win
     if (pointArray[0] >= 30) {
       gameBoard.result.innerHTML = "<span id=\"game-win\">Congratulation<br>You Win!</span><br><a href=\"\"><i class=\"fas fa-sync-alt\"></i></a>"
-      gameBoard.numpadBox.innerHTML += "<div class=\"button-disable\"></div>"
+      gameBoard.numpadBox.innerHTML += "<div class=\"button-disable\"></div>";
     } else {
       //* Gameborad life reset  //
       if (lifeArray.length < 5) {
@@ -63,12 +66,12 @@ function Enter() {
     lifeArray.pop(); //* poping array for reducing player life
 
     gameBoard.life.innerHTML = lifeArray; //* print life
-    gameBoard.result.innerHTML = "Guess Number " + random; //* print guess nummber
+    gameBoard.result.innerHTML = random > inputHistory[inputHistory.length - 1] ? "Too Low!" : "Too High!" //* print guess nummber
 
     //! GAME OVER CONDITION
     if (lifeArray.length < 1) {
       gameBoard.result.innerHTML += "<br><span id=\"game-over\">Game Over</span><br><a href=\"\"><i class=\"fas fa-sync-alt\"></i></a>"
-      gameBoard.numpadBox.innerHTML += "<div class=\"button-disable\"></div>"
+      gameBoard.numpadBox.innerHTML += "<div class=\"button-disable\"></div>";
     }
   }
 }
