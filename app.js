@@ -59,16 +59,32 @@ function Enter() {
       }
     }
 
+    //! Low life Alert
+    if (lifeArray.length < 3) {
+      gameBoard.displayBox.style.animationName = "anime";
+    } else {
+      gameBoard.displayBox.style.animationName = "";
+    }
+
     gameBoard.point.innerHTML = pointArray[0]; //* print point
     gameBoard.life.innerHTML = lifeArray; //* print life
 
   } else {
     lifeArray.pop(); //* poping array for reducing player life
 
+    //! Low life Alert
+    if (lifeArray.length < 3) {
+      gameBoard.displayBox.style.animationName = "anime";
+    } else {
+      gameBoard.displayBox.style.animationName = "";
+    }
+
+
     gameBoard.life.innerHTML = lifeArray; //* print life
     gameBoard.result.innerHTML = random > inputHistory[inputHistory.length - 1] ? "Too Low!" : "Too High!" //* print guess nummber
 
     //! GAME OVER CONDITION
+
     if (lifeArray.length < 1) {
       gameBoard.result.innerHTML += "<br><span id=\"game-over\">Game Over</span><br><a href=\"\"><i class=\"fas fa-sync-alt\"></i></a>"
       gameBoard.numpadBox.innerHTML += "<div class=\"button-disable\"></div>";
